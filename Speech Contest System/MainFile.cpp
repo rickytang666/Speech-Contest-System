@@ -26,9 +26,44 @@ int main()
 	// Create Manager class object
 
 	SpeechManager sm;
+	
+	// Provide options for users
 
-	sm.show_menu();
+	int choice = 0; // For storing user's input
 
+	while (true)
+	{
+		sm.show_menu();
+
+		cout << endl; // separation
+
+		cout << "Please enter your choice:  ";
+
+		cin >> choice;
+
+		if (choice == 1) // Start contest
+		{
+
+		}
+		else if (choice == 2) // See past contest records
+		{
+
+		}
+		else if (choice == 3) // Clear contest records
+		{
+
+		}
+		else if (choice == 0) // Quit application
+		{
+			sm.exit_system();
+		}
+		else // Invalid Input
+		{
+			system("cls");
+		}
+
+	}
+	
 	system("pause");
 	return 0;
 }

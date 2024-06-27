@@ -20,6 +20,11 @@ public:
 	void show_menu();
 
 
+	// Quit application
+
+	void exit_system();
+
+
 	// Destructor
 
 	~SpeechManager();

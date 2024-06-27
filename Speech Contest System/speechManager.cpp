@@ -23,6 +23,16 @@ void SpeechManager::show_menu()
 }
 
 
+// Quit application
+
+void SpeechManager::exit_system()
+{
+	cout << "See you next time :)" << endl;
+	system("pause");
+	exit(0);
+}
+
+
 // Destructor
 
 SpeechManager::~SpeechManager()
