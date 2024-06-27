@@ -15,6 +15,11 @@ public:
 	SpeechManager();
 
 
+	// Show Menu
+
+	void show_menu();
+
+
 	// Destructor
 
 	~SpeechManager();

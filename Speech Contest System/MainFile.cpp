@@ -9,3 +9,26 @@
 	Date Completed: TBD
 
 */
+
+
+// Necessary Packages
+
+#include<iostream>
+
+using namespace std;
+
+#include "speechManager.h"
+
+
+
+int main()
+{
+	// Create Manager class object
+
+	SpeechManager sm;
+
+	sm.show_menu();
+
+	system("pause");
+	return 0;
+}
