@@ -50,6 +50,11 @@ public:
 	void speech_contest();
 
 
+	// Display scores
+
+	void show_advanced_results();
+
+
 	// Show Menu
 
 	void show_menu();

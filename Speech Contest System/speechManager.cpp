@@ -82,20 +82,27 @@ void SpeechManager::start_speech()
 
 	// 3. Display advanced to final
 
+	this->show_advanced_results();
+
 
 	/************************************************************/
 
 
 	// ROUND 2
 
+	++this->m_Index; // update the current round number
+
 	// 1. Draw
 
+	this->speech_draw();
 
 	// 2. Speeches
 
+	this->speech_contest();
 
 	// 3. Show final results
 
+	this->show_advanced_results();
 
 	// 4. Record the results into the file
 
@@ -222,17 +229,16 @@ void SpeechManager::speech_contest()
 
 			int count = 0; // tell how many I've picked in each group
 
-			for (const pair<double, int>& value : group_score)
+			for (multimap<double, int, greater<int>>::iterator it = group_score.begin(); it != group_score.end() && count < 3; it++, count++)
 			{
 				if (this->m_Index == 1)
 				{
-					v2.push_back(value.second);
+					v2.push_back((*it).second);
 				}
 				else
 				{
-					vPodium.push_back(value.second);
+					vPodium.push_back((*it).second);
 				}
-
 			}
 
 			group_score.clear(); // This group finished, so we clear it
@@ -244,6 +250,37 @@ void SpeechManager::speech_contest()
 
 	cout << "---------- Contest Round < " << this->m_Index << " > Finished ----------" << endl;
 	system("pause");
+
+}
+
+
+// Display scores
+
+void SpeechManager::show_advanced_results()
+{
+	cout << "---------- Contest Round < " << this->m_Index << " > Competitors who Advanced to Final: -----------" << endl;
+
+	vector<int> v;
+
+	if (this->m_Index == 1)
+	{
+		v = v2;
+	}
+	else
+	{
+		v = vPodium;
+	}
+
+	for (const int& value : v)
+	{
+		cout << "Number: " << value << "  Name: " << this->m_Speakers[value].m_Name << "  Score: " << this->m_Speakers[value].m_Score[this->m_Index - 1] << endl;
+
+	}
+	cout << endl;
+
+	system("pause");
+	system("cls");
+	this->show_menu();
 
 }
 
