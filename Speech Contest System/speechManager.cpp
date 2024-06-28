@@ -4,7 +4,27 @@
 
 SpeechManager::SpeechManager()
 {
+	// Initialize containers and attributes
 
+	this->init_speech();
+}
+
+
+// Initialize the containers and attributes
+
+void SpeechManager::init_speech()
+{
+	// Clear all containers
+
+	this->v1.clear();
+	this->v2.clear();
+	this->vPodium.clear();
+	this->m_Speakers.clear();
+
+
+	// Initialize rounds
+
+	this->m_Index = 1;
 }
 
 
