@@ -48,7 +48,7 @@ int main()
 
 		if (choice == 1) // Start contest
 		{
-
+			sm.start_speech();
 		}
 		else if (choice == 2) // See past contest records
 		{

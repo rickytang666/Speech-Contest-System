@@ -64,6 +64,88 @@ void SpeechManager::create_speakers()
 }
 
 
+// Start Contest -> The whole process control
+
+void SpeechManager::start_speech()
+{
+	// ROUND 1
+
+	// 1. Draw
+
+	this->speech_draw();
+
+
+	// 2. Speeches
+
+
+	// 3. Display advanced to final
+
+
+	/************************************************************/
+
+
+	// ROUND 2
+
+	// 1. Draw
+
+
+	// 2. Speeches
+
+
+	// 3. Show final results
+
+
+	// 4. Record the results into the file
+
+}
+
+
+// Draw
+
+void SpeechManager::speech_draw()
+{
+	cout << "This is round <" << this->m_Index << "> competitors taking draws" << endl;
+
+	cout << "-------------------------------------------------" << endl;
+
+	cout << "The decided speech order as shown below: " << endl;
+
+
+	if (this->m_Index == 1)
+	{
+		// Round 1
+
+		random_shuffle(this->v1.begin(), this->v1.end());
+
+		for (const int& num : v1)
+		{
+			cout << num << " ";
+		}
+		cout << endl;
+
+	}
+	else
+	{
+		// Round 2
+
+		random_shuffle(this->v2.begin(), this->v2.end());
+
+		for (const int& num : v2)
+		{
+			cout << num << " ";
+		}
+		cout << endl;
+
+	}
+
+	cout << "-------------------------------------------------" << endl;
+
+	system("pause");
+	cout << endl;
+
+}
+
+
 // Show Menu
 
 void SpeechManager::show_menu()

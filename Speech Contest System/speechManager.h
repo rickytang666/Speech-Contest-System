@@ -14,6 +14,8 @@ class SpeechManager
 {
 public:
 
+	// FUNCTIONS
+
 	// Constructor
 
 	SpeechManager();
@@ -27,6 +29,16 @@ public:
 	// Create 12 competitors
 
 	void create_speakers();
+
+
+	// Start Contest -> The whole process control
+
+	void start_speech();
+
+	
+	// Draw
+
+	void speech_draw();
 
 
 	// Show Menu
@@ -44,7 +56,10 @@ public:
 	~SpeechManager();
 
 
-	// Member Attributes
+	/************************************************************************/
+
+
+	// MEMBER ATTRIBUTES
 
 	// container for storing round1 competitors
 
