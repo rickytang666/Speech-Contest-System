@@ -24,6 +24,11 @@ public:
 	void init_speech();
 
 
+	// Create 12 competitors
+
+	void create_speakers();
+
+
 	// Show Menu
 
 	void show_menu();

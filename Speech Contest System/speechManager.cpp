@@ -7,6 +7,10 @@ SpeechManager::SpeechManager()
 	// Initialize containers and attributes
 
 	this->init_speech();
+
+	// Create 12 speakers
+
+	this->create_speakers();
 }
 
 
@@ -25,6 +29,38 @@ void SpeechManager::init_speech()
 	// Initialize rounds
 
 	this->m_Index = 1;
+}
+
+
+// Create 12 competitors
+
+void SpeechManager::create_speakers()
+{
+	string nameSeed = "ABCDEFGHIJKL";
+
+	for (int i = 0; i < nameSeed.size(); ++i)
+	{
+		string name = string("Player") + nameSeed[i];
+
+		Speaker sp;
+		sp.m_Name = name;
+
+		// All the scores are 0
+
+		for (int j = 0; j < 2; ++j)
+		{
+			sp.m_Score[j] = 0;
+		}
+
+		// Create numbers for competitors and put them into v1 container
+
+		this->v1.push_back(i + 10001);
+
+		// put the numbers and according competitors into the map container
+
+		this->m_Speakers.insert(make_pair(i + 10001, sp));
+
+	}
 }
 
 

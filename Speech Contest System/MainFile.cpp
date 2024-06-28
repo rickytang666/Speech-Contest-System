@@ -14,6 +14,7 @@
 // Necessary Packages
 
 #include<iostream>
+#include<string>
 
 using namespace std;
 
@@ -26,6 +27,10 @@ int main()
 	// Create Manager class object
 
 	SpeechManager sm;
+
+	
+	
+
 	
 	// Provide options for users
 
