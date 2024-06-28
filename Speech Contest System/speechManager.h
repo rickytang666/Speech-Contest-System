@@ -1,9 +1,13 @@
 #pragma once
 
 #include<iostream>
+#include<string>
 #include<vector>
+#include<deque>
 #include<map>
 #include<algorithm>
+#include<numeric>
+#include<functional>
 #include "speaker.h"
 
 using namespace std;
@@ -39,6 +43,11 @@ public:
 	// Draw
 
 	void speech_draw();
+
+
+	// Actual contest
+
+	void speech_contest();
 
 
 	// Show Menu
