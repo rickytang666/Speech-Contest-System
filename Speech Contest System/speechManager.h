@@ -58,17 +58,22 @@ public:
 
 	// Save contest results
 
-	void save_record();
+	void save_records();
 
 	
 	// Search and check the past contest record
 
-	void load_record();
+	void load_records();
 
 
 	// Display the past records to user
 
-	void show_record();
+	void show_records();
+
+
+	// Clear all contest records
+
+	void clear_records();
 
 
 	// Show Menu

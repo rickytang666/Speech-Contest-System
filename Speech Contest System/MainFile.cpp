@@ -16,10 +16,9 @@
 #include<iostream>
 #include<string>
 #include<ctime>
+#include "speechManager.h"
 
 using namespace std;
-
-#include "speechManager.h"
 
 
 
@@ -54,19 +53,21 @@ int main()
 
 		cin >> choice;
 
+		cout << endl; // separation
+
 		if (choice == 1) // Start contest
 		{
 			sm.start_speech();
 		}
 		else if (choice == 2) // See past contest records
 		{
-			cout << endl; // separation
 
-			sm.show_record();
+			sm.show_records();
 		}
 		else if (choice == 3) // Clear contest records
 		{
 
+			sm.clear_records();
 		}
 		else if (choice == 0) // Quit application
 		{

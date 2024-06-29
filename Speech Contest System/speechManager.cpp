@@ -14,7 +14,7 @@ SpeechManager::SpeechManager()
 
 	// Load past records
 
-	this->load_record();
+	this->load_records();
 
 }
 
@@ -115,7 +115,7 @@ void SpeechManager::start_speech()
 
 	// 4. Record the results into the file
 
-	this->save_record();
+	this->save_records();
 
 
 	// Reset the contest and load the records
@@ -130,7 +130,7 @@ void SpeechManager::start_speech()
 
 	// Load past records
 
-	this->load_record();
+	this->load_records();
 
 
 	cout << "The whole competition is completed!" << endl;
@@ -144,7 +144,7 @@ void SpeechManager::start_speech()
 
 void SpeechManager::speech_draw()
 {
-	cout << "This is round <" << this->m_Index << "> competitors taking draws" << endl;
+	cout << "This is Round < " << this->m_Index << " > competitors taking draws" << endl;
 
 	cout << "-------------------------------------------------" << endl;
 
@@ -190,7 +190,7 @@ void SpeechManager::speech_draw()
 
 void SpeechManager::speech_contest()
 {
-	cout << "---------- Contest Round <" << this->m_Index << "> begins! ----------" << endl;
+	cout << "---------- Contest Round < " << this->m_Index << " > begins! ----------" << endl;
 
 	// prepare a temporary container to store the group results
 
@@ -280,7 +280,8 @@ void SpeechManager::speech_contest()
 	}
 
 	cout << "---------- Contest Round < " << this->m_Index << " > Finished ----------" << endl;
-	system("pause");
+	
+	cout << endl; // separation
 
 }
 
@@ -289,7 +290,9 @@ void SpeechManager::speech_contest()
 
 void SpeechManager::show_advanced_results()
 {
-	cout << "---------- Contest Round < " << this->m_Index << " > Competitors who Advanced to Final: -----------" << endl;
+	string advance_text = (this->m_Index == 1) ? "Advanced to Final!" : "Got on the Podium!";
+
+	cout << "---------- Contest Round < " << this->m_Index << " > Competitors who " << advance_text << " -----------" << endl;
 
 	vector<int> v;
 
@@ -318,7 +321,7 @@ void SpeechManager::show_advanced_results()
 
 // Save contest results
 
-void SpeechManager::save_record()
+void SpeechManager::save_records()
 {
 	ofstream ofs;
 
@@ -348,7 +351,7 @@ void SpeechManager::save_record()
 
 // Search and check the past contest record
 
-void SpeechManager::load_record()
+void SpeechManager::load_records()
 {
 	ifstream ifs("speech_records.csv", ios::in); // Input the file
 
@@ -433,7 +436,7 @@ void SpeechManager::load_record()
 
 // Display the past records to user
 
-void SpeechManager::show_record()
+void SpeechManager::show_records()
 {
 	if (this->fileIsEmpty)
 	{
@@ -453,6 +456,54 @@ void SpeechManager::show_record()
 		}
 	}
 	
+
+	system("pause");
+	system("cls");
+
+}
+
+
+// Clear all contest records
+
+void SpeechManager::clear_records()
+{
+	cout << "Are you sure you want to clear records?" << endl;
+	cout << "1. Confirm" << endl;
+	cout << "2. Cancel" << endl;
+
+	int select = 2;
+
+	cin >> select;
+
+	if (select == 1)
+	{
+		// Using ios::trunc -> If the file exists, delete and and recreate one
+
+		ofstream ofs("speech_records.csv", ios::trunc);
+
+		ofs.close();
+
+		
+		// Initialize the containers and attributes
+
+		this->init_speech();
+
+		// Recreate the speakers
+
+		this->create_speakers();
+
+		// Load the records (because we want to update the file conditions)
+
+		this->load_records();
+
+
+		// Output to users
+
+		cout << endl; // separation
+		cout << "Success" << endl;
+
+
+	}
 
 	system("pause");
 	system("cls");
