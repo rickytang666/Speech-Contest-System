@@ -52,7 +52,7 @@ int main()
 		}
 		else if (choice == 2) // See past contest records
 		{
-
+			
 		}
 		else if (choice == 3) // Clear contest records
 		{

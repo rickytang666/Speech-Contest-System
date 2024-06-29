@@ -11,6 +11,11 @@ SpeechManager::SpeechManager()
 	// Create 12 speakers
 
 	this->create_speakers();
+
+	// Load past records
+
+	this->load_record();
+
 }
 
 
@@ -105,6 +110,13 @@ void SpeechManager::start_speech()
 	this->show_advanced_results();
 
 	// 4. Record the results into the file
+
+	this->save_record();
+
+
+	cout << "The whole competition is completed!" << endl;
+	system("pause");
+	system("cls");
 
 }
 
@@ -281,6 +293,117 @@ void SpeechManager::show_advanced_results()
 	system("pause");
 	system("cls");
 	this->show_menu();
+
+}
+
+
+// Save contest results
+
+void SpeechManager::save_record()
+{
+	ofstream ofs;
+
+	ofs.open("speech_records.csv", ios::out | ios::app); // Using appending method to output the file
+
+	// Output everyone's data into the file
+
+	for (int& it : vPodium)
+	{
+		ofs << it << "," << this->m_Speakers[it].m_Score[1] << ",";
+	}
+
+	ofs << endl;
+
+	// Close the file after outputting
+
+	ofs.close();
+
+	cout << "Records have been saved!" << endl;
+
+}
+
+
+// Search and check the past contest record
+
+void SpeechManager::load_record()
+{
+	ifstream ifs("speech_records.csv", ios::in); // Input the file
+
+	if (!ifs.is_open())
+	{
+		this->fileIsEmpty = true;
+		cout << "File is not existing!" << endl;
+		ifs.close();
+		return;
+	}
+
+	// Case when the file is empty
+
+	char ch;
+
+	ifs >> ch;
+
+	if (ifs.eof())
+	{
+		cout << "File is empty!" << endl;
+		this->fileIsEmpty = true;
+		ifs.close();
+		return;
+	}
+
+
+	// Case when the file is NOT empty
+
+	this->fileIsEmpty = false;
+
+	ifs.putback(ch); // Put back the character which we inputted before
+
+	string data;
+
+	int edition = 1;
+
+	while (ifs >> data)
+	{
+
+		vector<string> v; // container which stores the 6 strings (represent the result data)
+
+
+		int pos = -1; // Variable for locating comma's position
+
+		int start = 0;
+		
+
+		while (true)
+		{
+			pos = data.find(',', start);
+
+			if (pos == -1)
+			{
+				// Did not find, exit the loop
+
+				break;
+			}
+
+			// If found, obtain the substring (data as a "word")
+
+			string temp = data.substr(start, pos - start);
+
+			v.push_back(temp);
+
+			// update the starting position
+
+			start = pos + 1;
+		}
+
+		
+		this->m_Record.insert(make_pair(edition, v));
+
+		++edition;
+
+
+	}
+
+	ifs.close();
 
 }
 

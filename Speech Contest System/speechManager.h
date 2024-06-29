@@ -1,6 +1,7 @@
 #pragma once
 
 #include<iostream>
+#include<fstream>
 #include<string>
 #include<vector>
 #include<deque>
@@ -53,6 +54,26 @@ public:
 	// Display scores
 
 	void show_advanced_results();
+
+
+	// Save contest results
+
+	void save_record();
+
+	
+	// Search and check the past contest record
+
+	void load_record();
+
+
+	// Boolean to check if the file is empty
+
+	bool fileIsEmpty;
+
+
+	// Map for storing the past records
+
+	map<int, vector<string>> m_Record;
 
 
 	// Show Menu
