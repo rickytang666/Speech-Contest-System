@@ -66,14 +66,9 @@ public:
 	void load_record();
 
 
-	// Boolean to check if the file is empty
+	// Display the past records to user
 
-	bool fileIsEmpty;
-
-
-	// Map for storing the past records
-
-	map<int, vector<string>> m_Record;
+	void show_record();
 
 
 	// Show Menu
@@ -115,6 +110,14 @@ public:
 	// variable for storing current round number
 
 	int m_Index;
+
+	// Boolean to check if the file is empty
+
+	bool fileIsEmpty;
+
+	// Map for storing the past records
+
+	map<int, vector<string>> m_Record;
 
 
 };

@@ -34,6 +34,10 @@ void SpeechManager::init_speech()
 	// Initialize rounds
 
 	this->m_Index = 1;
+
+	// Clear the records container
+
+	this->m_Record.clear();
 }
 
 
@@ -112,6 +116,21 @@ void SpeechManager::start_speech()
 	// 4. Record the results into the file
 
 	this->save_record();
+
+
+	// Reset the contest and load the records
+
+	// Initialize containers and attributes
+
+	this->init_speech();
+
+	// Create 12 speakers
+
+	this->create_speakers();
+
+	// Load past records
+
+	this->load_record();
 
 
 	cout << "The whole competition is completed!" << endl;
@@ -320,6 +339,10 @@ void SpeechManager::save_record()
 
 	cout << "Records have been saved!" << endl;
 
+	// Update the fileIsEmpty to false
+
+	this->fileIsEmpty = false;
+
 }
 
 
@@ -332,7 +355,7 @@ void SpeechManager::load_record()
 	if (!ifs.is_open())
 	{
 		this->fileIsEmpty = true;
-		cout << "File is not existing!" << endl;
+		/*cout << "File is not existing!" << endl;*/
 		ifs.close();
 		return;
 	}
@@ -345,7 +368,7 @@ void SpeechManager::load_record()
 
 	if (ifs.eof())
 	{
-		cout << "File is empty!" << endl;
+		/*cout << "File is empty!" << endl;*/
 		this->fileIsEmpty = true;
 		ifs.close();
 		return;
@@ -404,6 +427,35 @@ void SpeechManager::load_record()
 	}
 
 	ifs.close();
+
+}
+
+
+// Display the past records to user
+
+void SpeechManager::show_record()
+{
+	if (this->fileIsEmpty)
+	{
+		cout << "File is not exist OR File is empty!" << endl;
+		cout << "Please add some contest records by holding contests :)" << endl;
+	}
+	else
+	{
+		for (const pair<int, vector<string>>& item : this->m_Record)
+		{
+			cout << "------------- Contest NO." << item.first << " -------------" << endl;
+			cout << "Champion Number: " << item.second[0] << " | Score: " << item.second[1] << endl;
+			cout << "2nd-Place Number: " << item.second[2] << " | Score: " << item.second[3] << endl;
+			cout << "3rd-Place Number: " << item.second[4] << " | Score: " << item.second[5] << endl;
+			cout << "----------------------------------------" << endl;
+			cout << endl;
+		}
+	}
+	
+
+	system("pause");
+	system("cls");
 
 }
 

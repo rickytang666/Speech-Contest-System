@@ -15,6 +15,7 @@
 
 #include<iostream>
 #include<string>
+#include<ctime>
 
 using namespace std;
 
@@ -24,6 +25,13 @@ using namespace std;
 
 int main()
 {
+
+	// Add random seed
+
+	srand((unsigned int)time(NULL));
+
+
+
 	// Create Manager class object
 
 	SpeechManager sm;
@@ -52,7 +60,9 @@ int main()
 		}
 		else if (choice == 2) // See past contest records
 		{
-			
+			cout << endl; // separation
+
+			sm.show_record();
 		}
 		else if (choice == 3) // Clear contest records
 		{
